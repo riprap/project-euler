@@ -4,6 +4,45 @@ The prime factors of 13195 are 5, 7, 13 and 29.
 What is the largest prime factor of the number 600851475143?
 """
 
+number = 600851475143
+#check_primes_below = int(number/2)
+#primes = get_primes(check_primes_below)
+#answer = get_largest_prime_factor(primes, number)
+#print(answer)
+
+
+#passed a number, now check if it's prime ()
+def is_prime(number):
+	prime = 1
+	for a in range(2,int(number/2+1)):
+		if number%a == 0:
+			prime = 0
+			break;
+	return prime
+
+
+for i in range(2, number):
+	if number%i == 0:
+		factor = number/i
+		print("Checking if %s is prime" %(factor))
+		prime = is_prime(factor)
+		if prime:
+			print ("%s is the largest prime factor!" % factor)
+			break;
+
+
+
+
+
+
+
+
+
+
+
+
+
+#Below is what i previously had (made it more complicated than it was)
 """
 Start at the number/2 then go down until you find 
 the largest factor
@@ -75,30 +114,3 @@ def get_largest_prime_factor(primes_list, number):
 			multiplier+=1
 	
 
-
-
-number = 600851475143
-#check_primes_below = int(number/2)
-#primes = get_primes(check_primes_below)
-#answer = get_largest_prime_factor(primes, number)
-#print(answer)
-
-
-#passed a number, now check if it's prime ()
-def is_prime(number):
-	prime = 1
-	for a in range(2,int(number/2+1)):
-		if number%a == 0:
-			prime = 0
-			break;
-	return prime
-
-
-for i in range(2, number):
-	if number%i == 0:
-		factor = number/i
-		print("Checking if %s is prime" %(factor))
-		prime = is_prime(factor)
-		if prime:
-			print ("%s is the largest prime factor!" % factor)
-			break;
