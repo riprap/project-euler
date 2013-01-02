@@ -28,7 +28,7 @@ def get_factors(number):
 			factors.append(x)
 	return factors
 
-count = 100
+count = 1
 run = True
 while run:
 	count+=1
