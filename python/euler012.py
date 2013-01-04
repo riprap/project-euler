@@ -28,12 +28,22 @@ def get_factors(number):
 			factors.append(x)
 	return factors
 
-count = 1
+
+"""
+An idea would be to only add the next number to the previous number... 
+This would improve perforamnce
+"""
 run = True
-while run:
+number = 1
+count = 1
+previous_factors = 1
+while True:
 	count+=1
-	number=0
-	for x in range (1,count):
-		number+=x
-	if len(get_factors(number)) >= 500:
-		print(number)
+	number += count
+	factors = len(get_factors(number))
+	if factors > previous_factors:
+		print(factors)
+		previous_factors = factors
+	if factors >= 500:
+		print ("Triangular number: %s\nCount: %s\nFactors: %s"%(number,count, factors))
+		break
