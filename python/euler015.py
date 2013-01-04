@@ -15,7 +15,6 @@ down_moved = 0
 right_moved = 0
 
 
-move =
 
 #move1 options = right, down
 	#move 2 options = right, down
