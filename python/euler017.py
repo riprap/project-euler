@@ -30,6 +30,8 @@ def get_tens(number):
 	number_string = str(number)
 	if number >= 10 and number < 20:
 		length = get_teens(int(number_string[1]))
+	elif number < 10:
+		length = get_ones(number)
 	else:
 		tens_digit = int(number_string[0])
 		length = len(tens[tens_digit])
@@ -40,8 +42,14 @@ def get_tens(number):
 
 def get_hundreds(number):
 	number_string = str(number)
-	letters = get_ones(int(number_string[0])) + len("hundred") #get hundreds length of letters
-	letters += get_tens(int(number_string[1:2]))
+	length = get_ones(int(number_string[0]))
+	length +=  len("hundred") #get hundreds length of letters
+	
+	if number_string[-2:] != '00':
+		length += len("and") #add and for all hundreds not ending in 00
+		length += get_tens(int(number_string[1:3]))
+
+	return length
 
 def get_letters(number):
 	number_string = str(number)
@@ -54,21 +62,19 @@ def get_letters(number):
 		letters = get_tens(number)
 
 	if length == 3:
-		hundreds_digit = int(number_string[0])
-		letters = get_ones(hundreds_digit)
+		letters = get_hundreds(number)
 
 	if length == 4:
 		letters = len("onethousand")
 		
 	return letters
 
+total = 0
 for i in range(1,1001):
-	print(i, get_tens(i))
-"""
-for i in range(0,10):
-	print(get_letters(i))
+	total +=  get_letters(i)
+print (total)
 
-total_letters = 0
-"""
+#total_letters = 0
+
 #for i in range (1,1001):
 	#total_letters += get_letters(i)
